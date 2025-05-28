@@ -9,9 +9,10 @@ class Obstacle:
     def draw(self, screen: pygame.Surface):
         screen.blit(self.sprite, self.rect)
 
-    def move(self, speed, dt):
-        self.rect.x -= int(speed * dt)
-        self.hitbox.x -= int(speed * dt)
+    def move(self, speed: float, dt: float):
+        dx = int(speed * dt)
+        self.rect.x -= dx
+        self.hitbox.x -= dx
 
     def is_on_screen(self):
         return self.rect.right > 0
