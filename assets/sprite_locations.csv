@@ -1,0 +1,33 @@
+name, x, y, width, height
+retry button, 2, 2, 36, 32
+starting dino, 40, 4, 45, 45
+cloud, 88, 2, 44, 13
+bird first, 134, 2, 46, 40
+bird second, 180, 2, 46, 40
+small cactus single, 228, 2, 17, 35
+small cactus double, 245, 2, 34, 35
+small cactus triple, 279, 2, 51, 35
+large cactus single, 332, 2, 25, 50
+large cactus double, 357, 2, 50, 50
+large cactus quadruple, 407, 2, 75, 50
+game over, 484, 15, 191, 11
+zero, 484, 2, 10, 11
+one, 494, 2, 10, 11
+two, 504, 2, 10, 11
+three, 514, 2, 10, 11
+four, 524, 2, 10, 11
+five, 534, 2, 10, 11
+six, 544, 2, 10, 11
+seven, 554, 2, 10, 11
+eight, 564, 2, 10, 11
+nine, 574, 2, 10, 11
+high, 584, 2, 20, 11
+dino jumping, 677, 2, 44, 47
+dino no eyes, 721, 2, 44, 47
+dino running first, 765, 2, 44, 47
+dino running second, 809, 2, 44, 47
+dino dead, 853, 2, 44, 47
+dino dead dark, 897, 2, 44, 47
+dino ducking first, 941, 19, 59, 30
+dino ducking second, 1000, 19, 59, 30
+ground, 2, 54, 1200, 12
