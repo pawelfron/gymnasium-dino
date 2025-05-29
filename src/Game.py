@@ -3,14 +3,15 @@ import enum
 import csv
 from random import randrange
 from src.components import Player, Obstacle, Bird, Ground
+import pickle
 
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 600
 MAX_SPEED = 1000
 INIT_SPEED = 400
-INCR_SPEED = 10
+INCR_SPEED = 20
 FRAMERATE = 60
-SPAWN_THRESHOLD = 500
+SPAWN_THRESHOLD = 600
 ALTERNATE_ANIMATION_TIME = 100
 GROUND_Y_POSITION = 400
 DINO_X_POSITION = 100
@@ -58,7 +59,7 @@ class Game:
         )
         self.ground = Ground(self.sprites['ground'], GROUND_Y_POSITION)
 
-        self.distance_since_last_obstacle = 0
+        self.distance_since_last_obstacle = SPAWN_THRESHOLD
 
         self.speed = INIT_SPEED
         self.running = False
@@ -126,8 +127,9 @@ class Game:
             self._spawn_obstacle()
             self.distance_since_last_obstacle = 0
 
-        if self.speed < MAX_SPEED:
-            self.speed += INCR_SPEED * dt
+        da = INCR_SPEED * dt
+        if self.speed + da < MAX_SPEED:
+            self.speed += da
 
     def run(self):
         ALTERNATE_ANIMATION_EVENT = pygame.USEREVENT + 1
@@ -152,6 +154,28 @@ class Game:
             dt = self.clock.tick(FRAMERATE) / 1000
 
         pygame.quit()
+
+    def pool(self) -> list[float]:
+        state = []
+
+        state.append(self.player.position)
+        state.append(self.player.velocity)
+        state.append(self.player.rect.height)
+        state.append(self.speed)
+
+        if self.obstacles:
+            index = 0 if self.obstacles[0].rect.x > DINO_X_POSITION else 1
+            state.append(self.obstacles[index].rect.x)
+            state.append(self.obstacles[index].rect.y)
+            state.append(self.obstacles[index].rect.width)
+            state.append(self.obstacles[index].rect.height)
+        else:
+            state.append(1300)
+            state.append(375)
+            state.append(17)
+            state.append(35)
+
+        return state
 
     def quit(self):
         pygame.quit()
